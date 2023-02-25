@@ -79,7 +79,7 @@ lider. Zwiększać wartość zmiennj lider bę-
 dziemy wtedy, gdy ilość wystąpień elementu o
 indeksie równym głowie gąsienicy przewyższy
 wartość dotychczasową zmiennej lider. Całość
-powinna działać w złożono ści O(n * log n). */
+powinna działać w złożoności O(n * log n). */
 
 #include <iostream>
 #include <algorithm>
