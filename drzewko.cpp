@@ -41,7 +41,6 @@ dopóki ile_lisci != 1
 	ile_lisci /= 2;
 	
 wypisz pozycja_pilki */
-		
 
 #include <iostream>
 
