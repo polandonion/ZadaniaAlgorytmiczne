@@ -32,6 +32,7 @@ jeśli chcemy zdecydować się na zakup losów z
 aktualnie sprawdzanego kosza, musimy porównać
 dp[j] i dp[j - wyg[i]] + prz[i] oraz wybrać
 bardziej opłacalną wartość. */
+
 #include <iostream>
 
 using ll = long long;
