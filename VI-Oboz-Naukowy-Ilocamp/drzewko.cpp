@@ -19,29 +19,7 @@ się sytuacja (a może się owa zdarzyć), że ilość
 wrzuconych piłeczek (n) jest większa od ilości
 liści (2^h), modulujemy n w taki sposób:
 		n = n % (2^h)
-Po tej operacji mamy pewność, że log n <= h.
-
-
-Pseudokod wzorcowego rozwiązania:
-
-zadeklaruj n, h, ile_lisci, pozycja_pilki
-wczytaj n, h
-
-ile_lisci = 2^h
-pozycja_pilki = 0
-n %= ile_lisci
-
-dopóki ile_lisci != 1
-	jeśli n mod 2 = 0
-		pozycja_pilki += (ile_lisci / 2)
-		n /= 2
-	w przeciwnym razie
-		n = (n / 2) + 1
-	
-	ile_lisci /= 2;
-	
-wypisz pozycja_pilki */
-		
+Po tej operacji mamy pewność, że log n <= h. */
 
 #include <iostream>
 
