@@ -51,20 +51,22 @@ int main() {
 	int n, h;
 	cin >> n >> h;
 
-	int pos = 0, pol = (1 << h) / 2;
-	n %= pol * 2;
+	int pozycja_pilki = 0, ile_lisci = (1 << h);
+	n %= ile_lisci;
 
-	while (pol != 0) {
-		if (n % 2 == 0) { // prawa polowa
-			pos += pol;
+	while (ile_lisci != 1) {
+		// prawa polowa
+		if (n % 2 == 0) { 
+			pozycja_pilki += ile_lisci / 2;
 			n /= 2;
 		}
-
-		else // lewa polowa
+		
+		// lewa polowa
+		else 
 			n = n / 2 + 1;
 
-		pol /= 2;
+		ile_lisci /= 2;
 	}
 
-	cout << pos;
+	cout << pozycja_pilki;
 }
