@@ -75,7 +75,7 @@ gąsienicy jest równy 1 oraz czy ilość wys-
 tąpień dominanty fragmentu jest równa temu
 indeksowi. Jeśli tak, to liderem jest od
 teraz liczba o 1 mniejszsa niż dotychczasowy
-lider. Zwiększać wartość zmiennj lider bę-
+lider. Zwiększać wartość zmiennej lider bę-
 dziemy wtedy, gdy ilość wystąpień elementu o
 indeksie równym głowie gąsienicy przewyższy
 wartość dotychczasową zmiennej lider. Całość
