@@ -22,7 +22,7 @@ void bfs(Punkt2D start) {
 		if (x > 1 and plansza[x - 1][y] != 'x' and !vis[x - 1][y]) {
 			q.push({x - 1, y});
 			vis[x - 1][y] = vis[x][y] + 1;
-		} // moge pojsc w lewo i vis[x - 1][y] nie jest juz najlepsze
+		} // moge pojsc w lewo i vis[x - 1][y] nie jest jeszcze najlepsze
 		if (x < X and plansza[x + 1][y] != 'x' and !vis[x + 1][y]) {
 			q.push({x + 1, y});
 			vis[x + 1][y] = vis[x][y] + 1;
