@@ -1,3 +1,4 @@
+/*
 Rozwiązanie brutalne:
 
     Zauważmy, że najprostszym sposobem na zliczenie wszystkich par,
@@ -76,6 +77,101 @@ Rozwiązanie wzorcowe:
         zera * (uje + dod)
 
     Całość działa w złożonoćsi O(n), co wystarcza do uzyskania 100% za to zadanie.
+*/
+
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+long long arr[1000001];
+
+int main() {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0); cout.tie(0);
+
+	long long n, k;
+	cin >> n >> k;
+
+	// wczytywanie --------------
+	for (int i = 1; i <= n; i ++)
+		cin >> arr[i];
 
 
-Autor rozwiązania: Adam Franciszek Płatos
+	// sortowanie -------------
+	sort(arr + 1, arr + n + 1);
+
+
+	// zliczanie ujemnych, zer i dodatnich
+	long long uje = 0, zer = 0, dod = 0;
+	for (int i = 1; i <= n; i ++) {
+		uje += (arr[i] < 0);
+		zer += (arr[i] == 0);
+		dod += (arr[i] > 0);
+	}
+	// -----------------------------------
+
+
+	// pierwszy dodatni i ostatni ujemny
+	long long pd = 1, ou = n;
+	while (pd <= n and arr[pd] <= 0)
+		pd ++;
+	while (ou >= 1 and arr[ou] >= 0)
+		ou --;
+	// ---------------------------------
+
+	// obliczenia ------------------------
+	long long wyn = 0;
+	if (k == 0) {
+		// dodatnie z dodatnimi i analogicznie ujemne
+		wyn += (uje * (uje - 1)) / 2;
+		wyn += (dod * (dod - 1)) / 2;
+		// ------------------------------------------
+	}
+
+	else if (k > 0) {
+		long long l = 1, r = n;
+		long long _ou = ou, _pd = pd;
+
+		while (l < ou) {
+			while (_ou >= 1 and arr[l] * arr[_ou] <= k)
+				_ou --;
+
+			if (_ou >= l)
+				wyn += _ou - l;
+			l ++;
+		}
+		while (pd < r) {
+			while (_pd <= n and arr[_pd] * arr[r] <= k)
+				_pd ++;
+
+			if (_pd <= r)
+				wyn += r - _pd;
+			r --;
+		}
+	}
+
+	else {
+		// to samo co dla k == 0, dodatkowo zera
+		wyn += (uje * (uje - 1)) / 2;
+		wyn += (dod * (dod - 1)) / 2;
+		wyn += (zer * (zer - 1)) / 2;
+		wyn += (zer * (uje + dod));
+		// -------------------------------------
+
+		long long l = 1, r = n;
+		long long _ou = ou, _pd = pd;
+
+		while (_pd <= r) {
+			while (l <= _ou and arr[_pd] * arr[l] <= k)
+				l ++;
+
+			if (l <= _ou)
+				wyn += _ou - l + 1;
+			_pd ++;
+		}
+	}
+	// -----------------------------------
+
+	cout << wyn;
+}
